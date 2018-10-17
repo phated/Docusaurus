@@ -1,4 +1,7 @@
 {
+  "name": "docusaurus",
+  "description": "Easy to Maintain Open Source Documentation Websites",
+  "version": "1.5.0",
   "keywords": ["documentation", "websites", "open source", "docusaurus"],
   "repository": {
     "type": "git",
