@@ -24,5 +24,14 @@
       "v1/**/*.js": ["yarn lint:v1 --fix", "yarn prettier:v1", "git add"],
       "v2/**/*.js": ["yarn lint:v2 --fix", "yarn prettier:v2", "git add"]
     }
+  },
+  "bin": {
+    "docusaurus-start": "./v1/lib/start-server.js",
+    "docusaurus-build": "./v1/lib/build-files.js",
+    "docusaurus-publish": "./v1/lib/publish-gh-pages.js",
+    "docusaurus-examples": "./v1/lib/copy-examples.js",
+    "docusaurus-write-translations": "./v1/lib/write-translations.js",
+    "docusaurus-version": "./v1/lib/version.js",
+    "docusaurus-rename-version": "./v1/lib/rename-version.js"
   }
 }
