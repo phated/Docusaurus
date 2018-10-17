@@ -73,10 +73,10 @@ function mdToHtml(Metadata, baseUrl) {
       return;
     }
     let htmlLink = baseUrl + metadata.permalink.replace('/next/', '/');
-    if (htmlLink.includes('/docs/en/')) {
-      htmlLink = htmlLink.replace('/docs/en/', '/docs/en/VERSION/');
+    if (htmlLink.includes('/en/')) {
+      htmlLink = htmlLink.replace('/en/', '/en/VERSION/');
     } else {
-      htmlLink = htmlLink.replace('/docs/', '/docs/VERSION/');
+      htmlLink = htmlLink.replace('/', '/VERSION/');
     }
     result[metadata.source] = htmlLink;
   });

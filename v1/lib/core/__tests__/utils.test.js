@@ -42,8 +42,8 @@ describe('utils', () => {
   test('getPath', () => {
     // does not change/transform path
     expect(utils.getPath('/en/users.html', false)).toBe('/en/users.html');
-    expect(utils.getPath('/docs/en/versioning.html', false)).toBe(
-      '/docs/en/versioning.html',
+    expect(utils.getPath('/en/versioning.html', false)).toBe(
+      '/en/versioning.html',
     );
     expect(utils.getPath(undefined, false)).toBeUndefined();
     expect(utils.getPath(null, false)).toBeNull();
@@ -51,9 +51,9 @@ describe('utils', () => {
     // transform to pretty/clean path
     const cleanPath = pathStr => utils.getPath(pathStr, true);
     expect(cleanPath('/en/users')).toBe('/en/users');
-    expect(cleanPath('/docs/versioning.html')).toBe('/docs/versioning');
+    expect(cleanPath('/versioning.html')).toBe('/versioning');
     expect(cleanPath('/en/users.html')).toBe('/en/users');
-    expect(cleanPath('/docs/en/asd/index.html')).toBe('/docs/en/asd/');
+    expect(cleanPath('/en/asd/index.html')).toBe('/en/asd/');
     expect(cleanPath('/en/help/index.html')).toBe('/en/help/');
     expect(cleanPath('/index.html')).toBe('/');
     expect(cleanPath('/react/index.html')).toBe('/react/');
@@ -62,7 +62,7 @@ describe('utils', () => {
     expect(cleanPath('/test.md')).toBe('/test.md');
     expect(cleanPath('/blog/7.0.0')).toBe('/blog/7.0.0');
     expect(cleanPath('/test/5.html.2')).toBe('/test/5.html.2');
-    expect(cleanPath('/docs/en/5.2')).toBe('/docs/en/5.2');
+    expect(cleanPath('/en/5.2')).toBe('/en/5.2');
   });
 
   test('removeExtension', () => {
@@ -70,7 +70,7 @@ describe('utils', () => {
     expect(utils.removeExtension('/a.b/')).toBe('/a.b/');
     expect(utils.removeExtension('/a.b/c.png')).toBe('/a.b/c');
     expect(utils.removeExtension('/a.b/c.d.e')).toBe('/a.b/c.d');
-    expect(utils.removeExtension('/docs/test')).toBe('/docs/test');
+    expect(utils.removeExtension('/test')).toBe('/test');
     expect(utils.removeExtension('pages.js')).toBe('pages');
   });
 

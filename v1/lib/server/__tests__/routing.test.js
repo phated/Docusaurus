@@ -26,10 +26,10 @@ describe('Blog routing', () => {
   });
 
   test('docs not classified as blog', () => {
-    expect('/docs/en/blog.html').not.toMatch(blogRegex);
-    expect('/docs/en/blog/blog.html').not.toMatch(blogRegex);
-    expect('/react/docs/en/blog.html').not.toMatch(blogRegex2);
-    expect('/react/docs/en/blog/blog.html').not.toMatch(blogRegex2);
+    expect('/en/blog.html').not.toMatch(blogRegex);
+    expect('/en/blog/blog.html').not.toMatch(blogRegex);
+    expect('/react/en/blog.html').not.toMatch(blogRegex2);
+    expect('/react/en/blog/blog.html').not.toMatch(blogRegex2);
   });
 });
 
@@ -38,25 +38,25 @@ describe('Docs routing', () => {
   const docsRegex2 = routing.docs('/reason/');
 
   test('valid docs', () => {
-    expect('/docs/en/test.html').toMatch(docsRegex);
-    expect('/reason/docs/en/test.html').toMatch(docsRegex2);
+    expect('/en/test.html').toMatch(docsRegex);
+    expect('/reason/en/test.html').toMatch(docsRegex2);
   });
 
   test('invalid docs', () => {
-    expect('/reason/docs/en/test.html').not.toMatch(docsRegex);
-    expect('/docs/en/test.html').not.toMatch(docsRegex2);
+    expect('/reason/en/test.html').not.toMatch(docsRegex);
+    expect('/en/test.html').not.toMatch(docsRegex2);
   });
 
   test('assets not classified as docs', () => {
-    expect('/docs/en/notvalid.png').not.toMatch(docsRegex);
-    expect('/reason/docs/en/notvalid.png').not.toMatch(docsRegex2);
+    expect('/en/notvalid.png').not.toMatch(docsRegex);
+    expect('/reason/en/notvalid.png').not.toMatch(docsRegex2);
   });
 
   test('blog not classified as docs', () => {
     expect('/blog/docs.html').not.toMatch(docsRegex);
-    expect('/blog/docs/docs.html').not.toMatch(docsRegex);
+    expect('/blog/docs.html').not.toMatch(docsRegex);
     expect('/reason/blog/docs.html').not.toMatch(docsRegex2);
-    expect('/reason/blog/docs/docs.html').not.toMatch(docsRegex2);
+    expect('/reason/blog/docs.html').not.toMatch(docsRegex2);
   });
 });
 
@@ -64,14 +64,14 @@ describe('Dot routing', () => {
   const dotRegex = routing.dotfiles();
 
   test('valid url with dot after last slash', () => {
-    expect('/docs/en/test.23').toMatch(dotRegex);
+    expect('/en/test.23').toMatch(dotRegex);
     expect('/robots.hai.2').toMatch(dotRegex);
     expect('/blog/1.2.3').toMatch(dotRegex);
     expect('/this.is.my').toMatch(dotRegex);
   });
 
   test('html file is invalid', () => {
-    expect('/docs/en.html').not.toMatch(dotRegex);
+    expect('/en.html').not.toMatch(dotRegex);
     expect('/users.html').not.toMatch(dotRegex);
     expect('/blog/asdf.html').not.toMatch(dotRegex);
     expect('/end/1234/asdf.html').not.toMatch(dotRegex);
@@ -127,7 +127,7 @@ describe('Extension-less url routing', () => {
   test('url with file extension', () => {
     expect('/robots.txt').not.toMatch(noExtRegex);
     expect('/reason/robots.txt').not.toMatch(noExtRegex);
-    expect('/docs/en/docu.html').not.toMatch(noExtRegex);
+    expect('/en/docu.html').not.toMatch(noExtRegex);
     expect('/reason/robots.html').not.toMatch(noExtRegex);
     expect('/blog/atom.xml').not.toMatch(noExtRegex);
     expect('/reason/sitemap.xml').not.toMatch(noExtRegex);
@@ -148,8 +148,8 @@ describe('Page routing', () => {
   });
 
   test('docs not considered as page', () => {
-    expect('/docs/en/test.html').not.toMatch(pageRegex);
-    expect('/reason/docs/en/test.html').not.toMatch(pageRegex2);
+    expect('/en/test.html').not.toMatch(pageRegex);
+    expect('/reason/en/test.html').not.toMatch(pageRegex2);
   });
 
   test('blog not considered as page', () => {

@@ -9,7 +9,7 @@ function blog(baseUrl) {
 }
 
 function docs(baseUrl) {
-  return new RegExp(`^${baseUrl}docs/.*html$`);
+  return new RegExp(`^${baseUrl}.*html$`);
 }
 
 function dotfiles() {

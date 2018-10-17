@@ -87,7 +87,7 @@ async function execute() {
     }
     const redirectFile = join(
       buildDir,
-      metadata.permalink.replace('docs/en', 'docs'),
+      metadata.permalink.replace('en', 'docs'),
     );
     writeFileAndCreateFolder(redirectFile, redirectMarkup);
   });

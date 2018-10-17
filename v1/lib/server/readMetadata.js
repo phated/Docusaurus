@@ -142,14 +142,14 @@ function processMetadata(file, refDir) {
 
   // If a file is located in a subdirectory, prepend the subdir to it's ID
   // Example:
-  //  (file: 'docusaurus/docs/projectA/test.md', ID 'test', refDir: 'docusaurus/docs')
+  //  (file: 'docusaurus/projectA/test.md', ID 'test', refDir: 'docusaurus/docs')
   //  returns 'projectA/test'
   const subDir = utils.getSubDir(file, refDir);
   if (subDir) {
     metadata.id = `${subDir}/${metadata.id}`;
   }
 
-  // Example: `docs/projectA/test.md` source is `projectA/test.md`
+  // Example: `projectA/test.md` source is `projectA/test.md`
   metadata.source = subDir
     ? `${subDir}/${path.basename(file)}`
     : path.basename(file);
@@ -166,7 +166,7 @@ function processMetadata(file, refDir) {
     versionPart = 'next/';
   }
 
-  metadata.permalink = `docs/${langPart}${versionPart}${metadata.id}.html`;
+  metadata.permalink = `${langPart}${versionPart}${metadata.id}.html`;
 
   // change ids previous, next
   metadata.localized_id = metadata.id;
@@ -241,7 +241,7 @@ function generateMetadataDocs() {
           if (baseMetadata.permalink)
             baseMetadata.permalink = baseMetadata.permalink
               .toString()
-              .replace(/^docs\/en\//, `docs/${currentLanguage}/`);
+              .replace(/^en\//, `${currentLanguage}/`);
           if (baseMetadata.next)
             baseMetadata.next = baseMetadata.next
               .toString()

@@ -62,7 +62,7 @@ describe('mdToHtmlify', () => {
       mdToHtml,
       Metadata['en-doc1'],
     );
-    expect(content1).not.toContain('/docs/en/next/');
+    expect(content1).not.toContain('/en/next/');
     expect(content1).toMatchSnapshot();
     expect(content1).toEqual(rawContent1);
   });
@@ -73,7 +73,7 @@ describe('mdToHtmlify', () => {
       mdToHtml,
       Metadata['en-doc2'],
     );
-    expect(content2).toContain('/docs/en/next/');
+    expect(content2).toContain('/en/next/');
     expect(content2).toMatchSnapshot();
     expect(content2).not.toEqual(rawContent2);
   });
@@ -85,7 +85,7 @@ describe('getFile', () => {
     'v1/website/versioned_docs/version-1.0.0/doc2.md': 'Document 2 is not good',
     'v1/website/translated_docs/ko/version-1.0.0/doc1.md':
       '이것은 오래된 가짜입니다.',
-    'docs/doc1.md': 'Just another document',
+    'doc1.md': 'Just another document',
   };
   fs.existsSync = jest.fn().mockReturnValue(true);
   fs.readFileSync = jest.fn().mockImplementation(file => {
@@ -131,7 +131,7 @@ describe('getFile', () => {
 
   test('normal docs', () => {
     const metadata = Metadata['en-doc1'];
-    expect(docs.getFile(metadata)).toEqual(fakeContent['docs/doc1.md']);
+    expect(docs.getFile(metadata)).toEqual(fakeContent['doc1.md']);
   });
 });
 
@@ -139,23 +139,23 @@ describe('replaceAssetsLink', () => {
   test('transform document with valid assets link', () => {
     const content1 = docs.replaceAssetsLink(rawContent1);
     expect(content1).toMatchSnapshot();
-    expect(content1).toContain('![image1](/docs/assets/image1.png)');
-    expect(content1).toContain('![image2](/docs/assets/image2.jpg)');
-    expect(content1).toContain('![image3](/docs/assets/image3.gif)');
+    expect(content1).toContain('![image1](/assets/image1.png)');
+    expect(content1).toContain('![image2](/assets/image2.jpg)');
+    expect(content1).toContain('![image3](/assets/image3.gif)');
     expect(content1).toContain('![image4](assets/image4.bmp)');
     expect(content1).not.toContain('![image1](assets/image1.png)');
     expect(content1).not.toContain('![image2](assets/image2.jpg)');
     expect(content1).not.toContain('![image3](assets/image3.gif)');
-    expect(content1).not.toContain('![image4](/docs/assets/image4.bmp)');
+    expect(content1).not.toContain('![image4](/assets/image4.bmp)');
     expect(content1).not.toEqual(rawContent1);
   });
 
   test('does not transform document without valid assets link', () => {
     const content2 = docs.replaceAssetsLink(rawContent2);
     expect(content2).toMatchSnapshot();
-    expect(content2).not.toContain('![image1](/docs/assets/image1.png)');
-    expect(content2).not.toContain('![image2](/docs/assets/image2.jpg)');
-    expect(content2).not.toContain('![image3](/docs/assets/image3.gif)');
+    expect(content2).not.toContain('![image1](/assets/image1.png)');
+    expect(content2).not.toContain('![image2](/assets/image2.jpg)');
+    expect(content2).not.toContain('![image3](/assets/image3.gif)');
     expect(content2).toEqual(rawContent2);
   });
 });

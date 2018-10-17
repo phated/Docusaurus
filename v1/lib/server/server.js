@@ -339,7 +339,7 @@ function execute(port) {
 
   // serve static assets from these locations
   app.use(
-    `${siteConfig.baseUrl}docs/assets`,
+    `${siteConfig.baseUrl}assets`,
     express.static(join(CWD, '..', readMetadata.getDocsPath(), 'assets')),
   );
   app.use(

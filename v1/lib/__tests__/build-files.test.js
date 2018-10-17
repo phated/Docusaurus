@@ -44,7 +44,7 @@ describe('Build files', () => {
     generateSite();
     return Promise.all([
       glob(`${docsDir}/**/*.md`),
-      glob(`${buildDir}/${siteConfig.projectName}/docs/**/*.html`),
+      glob(`${buildDir}/${siteConfig.projectName}/**/*.html`),
       glob(`${docsDir}/assets/*`),
       glob(`${buildDir}/${siteConfig.projectName}/img/*`),
     ]).then(results => {
@@ -103,7 +103,7 @@ describe('Build files', () => {
     });
   });
 
-  test('Copied assets from /docs/assets', () => {
+  test('Copied assets from /assets', () => {
     const metadata = outputAssetsFiles.map(file =>
       filepath.create(file).basename(),
     );

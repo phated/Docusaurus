@@ -86,7 +86,7 @@ function replaceAssetsLink(oldContent) {
     }
     return fencedBlock
       ? line
-      : line.replace(/\]\(assets\//g, `](${siteConfig.baseUrl}docs/assets/`);
+      : line.replace(/\]\(assets\//g, `](${siteConfig.baseUrl}assets/`);
   });
   return lines.join('\n');
 }
@@ -113,7 +113,7 @@ function getMarkup(rawContent, mdToHtml, metadata) {
 }
 
 function getRedirectMarkup(metadata) {
-  if (!env.translation.enabled || !metadata.permalink.includes('docs/en')) {
+  if (!env.translation.enabled || !metadata.permalink.includes('en')) {
     return null;
   }
   const Redirect = require('../core/Redirect.js');
